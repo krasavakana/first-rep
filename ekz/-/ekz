@@ -1,0 +1,102 @@
+1. Promise - это возможность выполнить асинхронную операции точнее дождаться выполнение асинхронной операции
+и продолжить работу с чем либо внутри асинхронности. Например:
+
+let a = 6;
+
+console.log(a);
+
+let b = new Promise (function (resolve, reject) {
+    setTimout(() => {
+        resolve (a = 24);
+    }, 2500;
+});
+
+b.then(function () {
+    console.log(a);
+});
+Главная особенность Промиса это восможность оставить код с одним уровнем вложности, как функция и действие.
+
+
+
+2. Эволюция, асинхронного кода как Промисы не единственный) 2017 году появиоись async и await. Это новое фича
+от ES7. У него есть несколько ключевых особенностей которые могут работать с Промисами и вводит синтаксис
+синхронного кода в асинхронный.
+например:
+
+const fetchData = () => Promise, resolve({
+    data: ['Kanat', 'Kutman', 'Luiza']
+})
+
+const getNamesData = () => {
+    fetchData()
+        .then(data => {
+            console.log(data);
+            return 'done';
+        })
+}
+const getNamesData2 = async () => {
+    console.log(await fetchData());
+    return 'done';
+}
+
+getNamesData();
+getNamesData2();
+
+console.log(getNamesData2());
+
+Я сократил кода с четырех до двух, это один из главных особенностей asyng , await.
+
+
+3. this это сылка на обьект. Например:
+
+const user = {
+    name: 'kanat',
+    sayHello() {
+        console.log('салам попалам, я - ${this.name}', this)
+    }
+}
+user.sayHello()
+
+
+4. Замыкание это то что дает доступ к внешней функции из внутренней функции.
+ну к примеру взять:
+
+function init() {
+    var name = "Kanat";
+    function displayName() { // displayName() - внутренняя функция, замыкание
+        alert (name);
+    }
+    displayName();
+}
+init();
+
+5. Отличие стрелочной функции в том что нельзя задавать какое либо имя, также если имеет короткий синтаксиз
+очень часто применяются в кулбеках. например:
+
+const ar1 = [1,2,3,4,5,];
+
+function pow2 = (a) {
+    return a**2;
+
+}
+
+const ar2 = ar1.map(pow2);
+console.log(ar2);
+
+const ar3 = ar1.map(function(a) {
+    return a**2;
+})
+console.log(ar3);
+
+// Стрелочная функция
+
+const ar3 = ar1.map((a) => {
+    return a**2;
+})
+console.log(ar4);
+
+// короткий синтаксиз
+
+const ar3 = ar1.map(a => a**2);
+console.log(ar5);
+
